@@ -1,0 +1,90 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:shr="urn:import:havis.net.ui.shared.client" xmlns:io="urn:import:havis.net.ui.io.client" xmlns:s="urn:import:havis.net.ui.shared.client.widgets">
+	<ui:with type="havis.net.ui.shared.resourcebundle.ResourceBundle" field="res"></ui:with>
+	<ui:with type="havis.net.ui.shared.resourcebundle.ConstantsResource" field="lang"></ui:with>
+	<ui:style>
+	.ui {
+		font-size: 1.5em;
+		overflow: auto;
+	}
+	.pins {
+		padding: 0.5em 0 0.5em 0;
+		border-top: 1px solid lightgrey;
+	}
+	
+	.observe-container {
+		padding-right: 0.5em;
+	}
+
+	.controls > div {
+		border-right: 1px solid lightgrey;
+		height: 2em;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+	.controls > div.buttons {
+		border-right: 0;
+		padding: 0 0.5em;
+	}
+	
+	.header {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-align: center;
+		align-items: center;
+		padding-left: 0.5em;
+	}
+	
+	.header>* {
+		padding: 0.2em 0.4em 0.2em 0;
+		font-weight: bold;
+	}
+	
+	.header>:nth-child\(1\) {
+		width: 6em;
+	}
+	
+	.header>:nth-child\(2\) {
+		width: 8.8em;
+	}
+	
+	.header>:nth-child\(3\) {
+		width: 64px;
+	}
+
+	.header>:nth-child\(4\) {
+		width: 65px;
+	}
+	
+	</ui:style>
+	<g:FlowPanel styleName="{style.ui}">
+		<s:SettingsHeader iconSrc="havis.device.io/app.png" label="GPIO Hardware" />
+		<g:HTMLPanel addStyleNames="{style.controls} {res.css.ioPanel} {res.css.row}">
+			<div class="{style.observe-container}">
+				<g:ToggleButton styleName="{res.css.button} {res.css.active} {res.css.observeButton}" ui:field="observeButton">
+					<g:upFace><ui:text from="{lang.observe}"></ui:text></g:upFace>
+					<g:downFace><ui:text from="{lang.observing}"></ui:text> <img src="{res.llrpListLoading.getSafeUri}" class="{res.css.load}"/></g:downFace>
+				</g:ToggleButton>
+			</div>
+			<div class="{style.buttons}">
+				<g:Button ui:field="refreshButton" addStyleNames="{res.css.smallButton} {res.css.refresh}" />
+			</div>
+		</g:HTMLPanel>
+		<g:FlowPanel ui:field="ioPanels" addStyleNames="{style.pins}">
+			<g:FlowPanel ui:field="header" addStyleNames="{style.header}">
+				<g:Label text="Pin" />
+				<g:Label text="Direction" />
+				<g:Label text="State" />
+				<g:Label text="Initial" />
+			</g:FlowPanel>
+		</g:FlowPanel>
+	</g:FlowPanel>
+</ui:UiBinder> 

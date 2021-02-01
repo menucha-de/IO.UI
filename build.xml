@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="havis.net.ui.io" default="publish" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	<property file="${basedir}/build.properties" />
+
+	<import>
+		<url url="${ivy.url}/ant/default.xml" />
+	</import>
+
+	<target name="clean-cache">
+		<clean-cache />
+	</target>
+
+	<target name="clean-all">
+		<clean-all />
+	</target>
+
+	<target name="compile">
+		<compile>
+			<src path="${src.main.dir}" />
+		</compile>
+	</target>
+
+	<target name="jar" depends="compile" description="Creates the binary JAR">
+		<jar-bin />
+	</target>
+
+	<target name="publish" depends="jar">
+		<publish jar="false" app="false" />
+	</target>
+
+</project>
